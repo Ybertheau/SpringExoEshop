@@ -30,7 +30,7 @@ class ProduitRepositoryTest {
 
     @Test
     void test() {
-        Produit f = produitRepo.findById(50L).orElseThrow(ProduitException::new);
+        Produit f = produitRepo.findById(100L).orElseThrow(ProduitException::new);
         assertTrue(f instanceof Produit);
         // if (opt.isPresent()) {
         // System.out.println(opt.get());
