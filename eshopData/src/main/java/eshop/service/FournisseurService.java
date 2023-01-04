@@ -31,11 +31,4 @@ public class FournisseurService {
 		}
 	}
 
-	public Fournisseur getById(Long id) {
-		if (id == null) {
-			throw new IdException();
-		}
-		return fournisseurRepo.findByIdFetchFournisseurCommeReferent(id);
-
-	}
 }

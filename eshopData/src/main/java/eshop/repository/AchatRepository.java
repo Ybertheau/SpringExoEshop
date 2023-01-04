@@ -13,6 +13,6 @@ import eshop.entity.Commande;
 public interface AchatRepository extends JpaRepository<Achat, Long> {
     @Modifying
     @Transactional
-    @Query("delete Achat a where a.commande=:commande")
+    @Query("delete Achat a where a.id.commande=:commande")
     void deleteByCommande(@Param("commande") Commande commande);
 }
