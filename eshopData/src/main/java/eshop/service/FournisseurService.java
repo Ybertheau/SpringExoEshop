@@ -7,6 +7,7 @@ import eshop.entity.Fournisseur;
 import eshop.exception.FournisseurException;
 import eshop.exception.IdException;
 import eshop.repository.FournisseurRepository;
+import eshop.repository.ProduitRepository;
 
 @Service
 public class FournisseurService {
@@ -14,10 +15,10 @@ public class FournisseurService {
 	private FournisseurRepository fournisseurRepo;
 	@Autowired
 	private ProduitRepository produitRepo;
-	
+
 	public void create(Fournisseur fournisseur) {
 		checkFournisseurIsNotNull(fournisseur);
-		if(fournisseur.getNom()==null || fournisseur.getNom().isEmpty()) {
+		if (fournisseur.getNom() == null || fournisseur.getNom().isEmpty()) {
 			throw new FournisseurException("nom vide");
 		}
 		fournisseurRepo.save(fournisseur);
@@ -25,15 +26,16 @@ public class FournisseurService {
 
 	private void checkFournisseurIsNotNull(Fournisseur fournisseur) {
 		// TODO Auto-generated method stub
-		if (fournisseur==null) {
+		if (fournisseur == null) {
 			throw new FournisseurException("fournisseur null");
 		}
 	}
+
 	public Fournisseur getById(Long id) {
 		if (id == null) {
 			throw new IdException();
 		}
 		return fournisseurRepo.findByIdFetchFournisseurCommeReferent(id);
-				
+
 	}
 }
