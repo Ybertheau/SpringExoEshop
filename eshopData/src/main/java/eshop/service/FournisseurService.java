@@ -30,12 +30,11 @@ public class FournisseurService {
 			throw new FournisseurException("fournisseur null");
 		}
 	}
-
-	public Fournisseur getById(Long id) {
-		if (id == null) {
+	public void deleteById(Long id) {
+		if(id==null) {
 			throw new IdException();
 		}
-		return fournisseurRepo.findByIdFetchFournisseurCommeReferent(id);
-
+		fournisseurRepo.deleteById(id);;
 	}
+	
 }

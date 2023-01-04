@@ -19,8 +19,6 @@ public interface FournisseurRepository extends JpaRepository<Fournisseur,Long>{
 	List<Fournisseur> findByContact(String contact);
 	List<Fournisseur> findByName(String nom);
 	List<Fournisseur> findByNameContaining(String nom);
-	
-	
 	Page<Fournisseur> findByNomContaining(String nom, Pageable pageable);
 
 	@Query("select f from Fournisseur f left join fetch f.fourniseeurCommeReferent where f.id=:id")
