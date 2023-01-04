@@ -2,7 +2,6 @@ package eshop.entity;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,10 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
@@ -36,19 +33,21 @@ public class Produit {
 	private String description;
 	@Column(name = "product_price")
 	private double prix;
-	//@OneToOne // cote physique=>modification de la table avec ajout d'une colonne et d'un
-				// contrainte de type forgein key
-	@ManyToOne(fetch = FetchType.EAGER)//charger tout le temps EAGER par defaut pour @XXXToOne
+	// @OneToOne // cote physique=>modification de la table avec ajout d'une colonne
+	// et d'un
+	// contrainte de type forgein key
+	@ManyToOne(fetch = FetchType.EAGER) // charger tout le temps EAGER par defaut pour @XXXToOne
 	@JoinColumn(name = "product_supplier_id", foreignKey = @ForeignKey(name = "fk_product_product_supplier_id"))
 	private Fournisseur fournisseur;
-//	@ManyToMany(mappedBy = "achats")
-//	private Set<Commande> achats;
+	// @ManyToMany(mappedBy = "achats")
+	// private Set<Commande> achats;
 	@JsonIgnore
 	@OneToMany(mappedBy = "id.produit")
 	private List<Achat> achats;
 	@JsonIgnore
 	@Version
 	private int version;
+
 	public List<Achat> getAchats() {
 		return achats;
 	}
@@ -62,7 +61,7 @@ public class Produit {
 	}
 
 	public Produit(String libelle, String description, double prix) {
-		this(libelle,description,prix,null);
+		this(libelle, description, prix, null);
 	}
 
 	public Produit(String libelle, String description, double prix, Fournisseur fournisseur) {

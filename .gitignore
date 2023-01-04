@@ -1,19 +1,19 @@
 .vscode
 
-target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
-dependency-reduced-pom.xml
-buildNumber.properties
-.mvn/timing.properties
+eshopData/target/
+eshopData/pom.xml.tag
+eshopData/pom.xml.releaseBackup
+eshopData/pom.xml.versionsBackup
+eshopData/pom.xml.next
+eshopData/release.properties
+eshopData/dependency-reduced-pom.xml
+eshopData/buildNumber.properties
+eshopData/.mvn/timing.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
-.mvn/wrapper/maven-wrapper.jar
+eshopData/.mvn/wrapper/maven-wrapper.jar
 
 # Eclipse m2e generated files
 # Eclipse Core
-.project
+eshopData/.project
 # JDT-specific (Eclipse Java Development Tools)
-.classpath
+eshopData/.classpath
