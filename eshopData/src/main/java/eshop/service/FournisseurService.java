@@ -34,7 +34,7 @@ public class FournisseurService {
 		if(id==null) {
 			throw new IdException();
 		}
-		fournisseurRepo.deleteById(id);;
+		fournisseurRepo.deleteById(id);
 	}
 	
 }

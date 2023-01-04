@@ -3,23 +3,21 @@ package eshop.repository;
 import java.util.List;
 import java.util.Optional;
 
-import javax.transaction.Transactional;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import eshop.entity.Fournisseur;
 
-public interface FournisseurRepository extends JpaRepository<Fournisseur,Long>{
-
+public interface FournisseurRepository extends JpaRepository<Fournisseur, Long>{
 	List<Fournisseur> findByContact(String contact);
-	List<Fournisseur> findByName(String nom);
-	List<Fournisseur> findByNameContaining(String nom);
-	Page<Fournisseur> findByNomContaining(String nom, Pageable pageable);
+	List<Fournisseur> findByName(String name);
+	List<Fournisseur> findByNameContaining(String name);
+	Page<Fournisseur> findByNomContaining(String name, Pageable pageable);
 
 	@Query("select f from Fournisseur f left join fetch f.fourniseeurCommeReferent where f.id=:id")
 	Optional<Fournisseur> findByIdFetchFourniseurCommeReferent(@Param("id") Long id);
